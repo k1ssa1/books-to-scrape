@@ -1,8 +1,8 @@
-from homepage.scrape_homepage import scrp_homepage
+from homepage.scrape_homepage import scrape_catalogue
 
 
 def main():
-    scrp_homepage()
+    scrape_catalogue()
 
 
 if __name__ == "__main__":
