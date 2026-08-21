@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
 
+from pydantic import BaseModel
+
 
 def scrp_homepage():
 
@@ -9,6 +11,17 @@ def scrp_homepage():
 
     soup = BeautifulSoup(res.text, "html.parser")
 
+    class Image(BaseModel):
+        description: str
+        src: str
+
+    class Book(BaseModel):
+        title: str
+        price: float
+        availability: str
+        rating: int
+        image: Image
+
     books_collection = []
 
     books = soup.find_all("article", class_="product_pod")
@@ -16,7 +29,7 @@ def scrp_homepage():
         img_src = b.find("img", class_="thumbnail").get("src")
         img_alt = b.find("img", class_="thumbnail").get("alt")
         title = b.h3.text
-        price = b.find("p", class_="price_color").text.replace("Â£", "")
+        price = float(b.find("p", class_="price_color").text.replace("Â£", ""))
         availability = b.find("p", class_="instock availability").text.strip()
         rating = b.find("p", class_="star-rating").get("class")[1]
         if rating == "One":
@@ -30,14 +43,14 @@ def scrp_homepage():
         elif rating == "Five":
             rating = 5
 
-        books_collection.append(
-            {
-                "title": title,
-                "availability": availability,
-                "price": price,
-                "rating": str(rating) + "/5",
-                "image": {"description": img_alt, "src": img_src},
-            }
+        book = Book(
+            title=title,
+            price=price,
+            availability=availability,
+            rating=rating,
+            image={"description": img_alt, "src": img_src},
         )
+
+        books_collection.append(book)
 
     print(books_collection)
