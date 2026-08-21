@@ -42,3 +42,13 @@ Run the application from your IDE or from the terminal:
 ```bash
 python main.py
 ```
+
+## Project Structure
+
+```text
+books-to-scrape/
+├── homepage/
+│   └── scrape_homepage.py
+├── .gitignore
+├── README.md
+└── requirements.txt
