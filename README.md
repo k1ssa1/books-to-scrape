@@ -47,6 +47,8 @@ python main.py
 
 ```text
 books-to-scrape/
+├── categories/
+│   └── scrape_categories.py
 ├── homepage/
 │   └── scrape_homepage.py
 ├── .gitignore
