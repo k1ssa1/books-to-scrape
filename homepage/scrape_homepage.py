@@ -1,6 +1,5 @@
-from bs4 import BeautifulSoup
 import requests
-
+from bs4 import BeautifulSoup
 from pydantic import BaseModel
 
 
@@ -20,13 +19,12 @@ class Book(BaseModel):
 def scrape_catalogue():
 
     baseurl = "https://books.toscrape.com/catalogue/page-"
-    extension = '.html'
+    extension = ".html"
 
     books_collection = []
 
     with requests.Session() as session:
         for page in range(1, 51):
-
             res = session.get(baseurl + str(page) + extension, timeout=10)
             res.raise_for_status()
 
