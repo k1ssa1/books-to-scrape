@@ -47,6 +47,8 @@ python main.py
 
 ```text
 books-to-scrape/
+├── books_details/
+│   └── scrape_details.py
 ├── categories/
 │   └── scrape_categories.py
 ├── catalogue/
