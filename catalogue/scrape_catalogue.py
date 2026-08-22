@@ -14,6 +14,7 @@ class Book(BaseModel):
     availability: str
     rating: int
     image: Image
+    url: str
 
 
 def scrape_catalogue():
@@ -38,6 +39,7 @@ def scrape_catalogue():
                 price = float(b.find("p", class_="price_color").text.replace("Â£", ""))
                 availability = b.find("p", class_="instock availability").text.strip()
                 rating = b.find("p", class_="star-rating").get("class")[1]
+                url = b.h3.find("a").get("href")
                 if rating == "One":
                     rating = 1
                 elif rating == "Two":
@@ -55,6 +57,7 @@ def scrape_catalogue():
                     availability=availability,
                     rating=rating,
                     image={"description": img_alt, "src": img_src},
+                    url=url
                 )
 
                 books_collection.append(book)
