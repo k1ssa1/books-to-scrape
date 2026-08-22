@@ -1,5 +1,5 @@
 from categories.scrape_categories import scrape_categories
-from homepage.scrape_homepage import scrape_catalogue
+from catalogue.scrape_catalogue import scrape_catalogue
 
 
 def main():
