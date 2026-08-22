@@ -49,8 +49,8 @@ python main.py
 books-to-scrape/
 ├── categories/
 │   └── scrape_categories.py
-├── homepage/
-│   └── scrape_homepage.py
+├── catalogue/
+│   └── scrape_catalogue.py
 ├── .gitignore
 ├── README.md
 └── requirements.txt
