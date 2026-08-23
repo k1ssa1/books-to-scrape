@@ -1,7 +1,5 @@
 # Books to Scrape
 
----
-
 ## Objective
 
 For educational purposes only.
