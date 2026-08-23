@@ -10,6 +10,16 @@ def main():
 
     scrape_books_by_category()
 
+    books = scrape_catalogue()
+
+    with requests.session() as session:
+        detailed_books = []
+
+        for book in books:
+            details = scrape_details(book.url, session)
+            detailed_books.append(details)
+
+    scrape_categories_list()
 
 if __name__ == "__main__":
     main()
