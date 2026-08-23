@@ -12,6 +12,8 @@ This project scrapes the demo website [Books to Scrape](https://books.toscrape.c
 books-to-scrape/
 ├── books_details/
 │   └── scrape_details.py
+├── books_by_cat/
+│   └── scrape_books_by_category.py
 ├── catalogue/
 │   └── scrape_catalogue.py
 ├── categories_list/
