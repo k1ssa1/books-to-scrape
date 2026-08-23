@@ -26,7 +26,7 @@ def scrape_catalogue():
 
     with requests.Session() as session:
         for page in range(1, 51):
-            res = session.get(baseurl + str(page) + extension, timeout=10)
+            res = session.get(baseurl + str(page) + extension, timeout=30)
             res.raise_for_status()
 
             soup = BeautifulSoup(res.text, "html.parser")
