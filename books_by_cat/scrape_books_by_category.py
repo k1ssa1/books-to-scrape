@@ -62,5 +62,4 @@ def scrape_books_by_category():
 
                 books_collection.append(book)
 
-
         return books_collection
