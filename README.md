@@ -19,6 +19,7 @@ books-to-scrape/
 ├── categories_list/
 │   └── scrape_categories_list.py
 ├── .gitignore
+├── main.py
 ├── README.md
 └── requirements.txt
 ```
