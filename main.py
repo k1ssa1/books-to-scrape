@@ -1,12 +1,13 @@
 import requests
 
 from book_details.scrape_details import scrape_details
+from categories_list.scrape_categories_list import scrape_categories_list
 from catalogue.scrape_catalogue import scrape_catalogue
 
 
 def main():
     books = scrape_catalogue()
-    # scrape_categories()
+    scrape_categories_list()
 
     with requests.session() as session:
         detailed_books = []

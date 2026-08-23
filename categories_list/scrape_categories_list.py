@@ -7,7 +7,7 @@ class Category(BaseModel):
     name: str
 
 
-def scrape_categories():
+def scrape_categories_list():
     with requests.session() as session:
         url = "https://books.toscrape.com/index.html"
         res = session.get(url, timeout=10)
