@@ -35,7 +35,14 @@ def main():
             details = scrape_details(book.url, session)
             detailed_books.append(details)
 
-    scrape_categories_list()
+    category_list = scrape_categories_list()
+
+    with open(r"C:\Users\HP\Downloads\category_list.csv", 'w', newline='', encoding="utf-8") as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(["name"])
+        for cat in category_list:
+            writer.writerow([cat.name])
+
 
 if __name__ == "__main__":
     main()
