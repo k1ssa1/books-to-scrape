@@ -14,10 +14,10 @@ This project scrapes the demo website [Books to Scrape](https://books.toscrape.c
 books-to-scrape/
 ├── books_details/
 │   └── scrape_details.py
-├── categories/
-│   └── scrape_categories.py
 ├── catalogue/
 │   └── scrape_catalogue.py
+├── categories_list/
+│   └── scrape_categories_list.py
 ├── .gitignore
 ├── README.md
 └── requirements.txt
