@@ -35,6 +35,38 @@ def main():
             details = scrape_details(book.url, session)
             detailed_books.append(details)
 
+        with open(r"C:\Users\HP\Downloads\book_details.csv", "w", newline='', encoding="utf-8") as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow([
+                "title",
+                "price",
+                "availability",
+                "description",
+                "code",
+                "bookType",
+                "priceExclTax",
+                "priceInclTax",
+                "tax",
+                "reviewCount",
+                "imageSrc",
+                "imageDesc"
+            ])
+            for d in detailed_books:
+                writer.writerow([
+                    d.title,
+                    d.price,
+                    d.availability,
+                    d.description,
+                    d.code,
+                    d.bookType,
+                    d.priceExclTax,
+                    d.priceInclTax,
+                    d.tax,
+                    d.reviewCount,
+                    d.image.img_src,
+                    d.image.img_description
+                ])
+
     category_list = scrape_categories_list()
 
     with open(r"C:\Users\HP\Downloads\category_list.csv", 'w', newline='', encoding="utf-8") as csvfile:
