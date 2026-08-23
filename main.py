@@ -1,10 +1,20 @@
+import requests
+
+from book_details.scrape_details import scrape_details
 from categories.scrape_categories import scrape_categories
 from catalogue.scrape_catalogue import scrape_catalogue
 
 
 def main():
-    scrape_catalogue()
-    scrape_categories()
+    books = scrape_catalogue()
+    # scrape_categories()
+
+    with requests.session() as session:
+        detailed_books = []
+
+        for book in books:
+            details = scrape_details(book.url, session)
+            detailed_books.append(details)
 
 
 if __name__ == "__main__":

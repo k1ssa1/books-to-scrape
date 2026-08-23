@@ -57,7 +57,7 @@ def scrape_catalogue():
                     availability=availability,
                     rating=rating,
                     image={"description": img_alt, "src": img_src},
-                    url=url
+                    url=url,
                 )
 
                 books_collection.append(book)
