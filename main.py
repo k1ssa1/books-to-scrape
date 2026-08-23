@@ -10,13 +10,35 @@ import csv
 
 def main():
 
-    scrape_books_by_category()
+    mystery_books = scrape_books_by_category()
+
+    with open(r"C:\Users\HP\Downloads\mystery_books.csv", 'w', newline='', encoding='utf-8') as csvfile:
+        wr1 = csv.writer(csvfile)
+        wr1.writerow([
+            "title",
+            "price",
+            "availability",
+            "rating",
+            "image description",
+            "image src",
+            "url"
+        ])
+        for mb in mystery_books:
+            wr1.writerow([
+                mb.title,
+                mb.price,
+                mb.availability,
+                mb.rating,
+                mb.image.description,
+                mb.image.src,
+                 mb.url
+            ])
 
     books_in_catalogue = scrape_catalogue()
 
     with open(r"C:\Users\HP\Downloads\books_catalogue.csv", 'w', newline='', encoding="utf-8") as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow([
+        wr2 = csv.writer(csvfile)
+        wr2.writerow([
             "title",
             "price",
             "availability",
@@ -26,7 +48,7 @@ def main():
             "url"
         ])
         for book in books_in_catalogue:
-            writer.writerow([book.title, book.price, book.availability, book.rating, book.image.description, book.image.src, book.url])
+            wr2.writerow([book.title, book.price, book.availability, book.rating, book.image.description, book.image.src, book.url])
 
     with requests.session() as session:
         detailed_books = []
@@ -36,8 +58,8 @@ def main():
             detailed_books.append(details)
 
         with open(r"C:\Users\HP\Downloads\book_details.csv", "w", newline='', encoding="utf-8") as csvfile:
-            writer = csv.writer(csvfile)
-            writer.writerow([
+            wr3 = csv.writer(csvfile)
+            wr3.writerow([
                 "title",
                 "price",
                 "availability",
@@ -52,7 +74,7 @@ def main():
                 "imageDesc"
             ])
             for d in detailed_books:
-                writer.writerow([
+                wr3.writerow([
                     d.title,
                     d.price,
                     d.availability,
@@ -70,10 +92,10 @@ def main():
     category_list = scrape_categories_list()
 
     with open(r"C:\Users\HP\Downloads\category_list.csv", 'w', newline='', encoding="utf-8") as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(["name"])
+        wr4 = csv.writer(csvfile)
+        wr4.writerow(["name"])
         for cat in category_list:
-            writer.writerow([cat.name])
+            wr4.writerow([cat.name])
 
 
 if __name__ == "__main__":
