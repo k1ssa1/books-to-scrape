@@ -1,10 +1,27 @@
 # Books to Scrape
 
+---
+
 ## Objective
 
 For educational purposes only.
 
 This project scrapes the demo website [Books to Scrape](https://books.toscrape.com/) to demonstrate fundamental web scraping concepts using Python.
+
+## Project Structure
+
+```text
+books-to-scrape/
+├── books_details/
+│   └── scrape_details.py
+├── categories/
+│   └── scrape_categories.py
+├── catalogue/
+│   └── scrape_catalogue.py
+├── .gitignore
+├── README.md
+└── requirements.txt
+```
 
 ## Installation
 
@@ -13,7 +30,7 @@ This project scrapes the demo website [Books to Scrape](https://books.toscrape.c
 ```bash
 git clone https://github.com/k1ssa1/books-to-scrape.git
 cd books-to-scrape
-```
+
 
 ### 2. Create a virtual environment
 
@@ -42,17 +59,3 @@ Run the application from your IDE or from the terminal:
 ```bash
 python main.py
 ```
-
-## Project Structure
-
-```text
-books-to-scrape/
-├── books_details/
-│   └── scrape_details.py
-├── categories/
-│   └── scrape_categories.py
-├── catalogue/
-│   └── scrape_catalogue.py
-├── .gitignore
-├── README.md
-└── requirements.txt
