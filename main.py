@@ -1,7 +1,6 @@
 import requests
 
 from book_details.scrape_details import scrape_details
-from categories.scrape_categories import scrape_categories
 from catalogue.scrape_catalogue import scrape_catalogue
 
 

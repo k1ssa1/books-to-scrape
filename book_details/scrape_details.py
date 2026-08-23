@@ -1,11 +1,14 @@
+from urllib.parse import urljoin
+
 import requests
 from bs4 import BeautifulSoup
 from pydantic import BaseModel
-from urllib.parse import urljoin
+
 
 class Image(BaseModel):
     img_src: str
     img_description: str
+
 
 class Book(BaseModel):
     title: str
@@ -20,6 +23,7 @@ class Book(BaseModel):
     reviewCount: int
     image: Image
 
+
 def scrape_details(url: str, session: requests.Session):
 
     base_url = "https://books.toscrape.com/catalogue/"
@@ -29,7 +33,7 @@ def scrape_details(url: str, session: requests.Session):
     res = session.get(absolute_url, timeout=10)
     res.raise_for_status()
 
-    soup = BeautifulSoup(res.text, 'html.parser')
+    soup = BeautifulSoup(res.text, "html.parser")
     details = soup.find("article", class_="product_page")
     img_section = details.find("div", class_="item active")
     img_src = img_section.find("img").get("src")
@@ -59,14 +63,11 @@ def scrape_details(url: str, session: requests.Session):
         description=description,
         code=product_code,
         bookType=product_type,
-        priceExclTax= price_excl_tax,
-        priceInclTax= price_incl_tax,
-        tax= tax,
-        reviewCount= review_count,
-        image= {
-            "img_src": img_src,
-            "img_description": img_description
-        }
+        priceExclTax=price_excl_tax,
+        priceInclTax=price_incl_tax,
+        tax=tax,
+        reviewCount=review_count,
+        image={"img_src": img_src, "img_description": img_description},
     )
 
     return book
