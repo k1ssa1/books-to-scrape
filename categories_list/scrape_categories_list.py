@@ -23,4 +23,4 @@ def scrape_categories_list():
             category = Category(name=extracted_name)
             category_list.append(category)
 
-        print(category_list)
+    return category_list

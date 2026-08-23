@@ -62,6 +62,5 @@ def scrape_books_by_category():
 
                 books_collection.append(book)
 
-        print(books_collection)
 
         return books_collection
