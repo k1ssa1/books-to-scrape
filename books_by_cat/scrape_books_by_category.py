@@ -2,9 +2,11 @@ import requests
 from bs4 import BeautifulSoup
 from pydantic import BaseModel
 
+
 class Image(BaseModel):
     description: str
     src: str
+
 
 class Book(BaseModel):
     title: str
@@ -14,20 +16,21 @@ class Book(BaseModel):
     image: Image
     url: str
 
+
 def scrape_books_by_category():
 
     books_collection = []
 
-    base_url = 'https://books.toscrape.com/catalogue/category/books/mystery_3/page-'
-    extension = '.html'
+    base_url = "https://books.toscrape.com/catalogue/category/books/mystery_3/page-"
+    extension = ".html"
 
     with requests.session() as session:
-        for page in range(1,3):
+        for page in range(1, 3):
             absolute_path = base_url + str(page) + extension
 
             res = session.get(absolute_path, timeout=10)
             res.raise_for_status()
-            soup = BeautifulSoup(res.text, 'html.parser')
+            soup = BeautifulSoup(res.text, "html.parser")
             books = soup.find_all("article", class_="product_pod")
             for b in books:
                 img_src = b.find("img", class_="thumbnail").get("src")
@@ -62,4 +65,3 @@ def scrape_books_by_category():
         print(books_collection)
 
         return books_collection
-

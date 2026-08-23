@@ -11,6 +11,5 @@ def main():
     scrape_books_by_category()
 
 
-
 if __name__ == "__main__":
     main()
